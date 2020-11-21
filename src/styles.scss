@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+@import '../node_modules/primeng/resources/primeng.min.css';
+@import '../node_modules/primeng/resources/themes/luna-blue/theme.css';
+
+@font-face {
+	font-family: 'zombieFont';
+	src: url('./assets/fonts/edosz.ttf')
+         format('opentype');
+}
+
+h1 {
+    font-size: 4em;
+    margin-block-start: 10px;
+    margin-block-end: 10px;
+    margin-inline-start: 10px;
+    margin-inline-end: 10px; 
+    text-align: center;
+}
+
+.ui-sortable-column.ng-star-inserted {
+    font-family: 'zombieFont', 'Montserrat', sans-serif;
+    color: #c49434 !important;
+}
+
+body {
+    margin: 0;
+    // background: #F2F2F2;
+    font-family: 'zombieFont', 'Montserrat', sans-serif;
+    color: #c49434;
+    height: 100vh;
+}
+
+#container {
+   display: grid;
+   grid-template-columns: 70px auto;
+   height: 100%;
+
+   #content {
+       padding: 30px 50px;
+   }
+}

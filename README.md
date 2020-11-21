@@ -1,5 +1,7 @@
 # Zimbues
 
+A web scraper to filter zombiesworldrecords.com to more easily find attainable records for my friends and I to break on Call of Duty Zombies
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
 
 ## Development server
