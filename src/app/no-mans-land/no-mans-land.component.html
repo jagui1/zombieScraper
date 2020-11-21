@@ -1,0 +1,34 @@
+<h1>{{ title }}</h1>
+
+<p-table #dt [columns]="cols" [value]="records" sortMode="multiple">
+
+    <ng-template pTemplate="caption">
+        <div style="text-align: right">
+            <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
+            <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns" [pSortableColumn]="col.field">{{col.header}}</th>
+        </tr>
+        <tr>
+            <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                <p-dropdown *ngSwitchCase="'record'" [options]="types" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
+                <p-dropdown *ngSwitchCase="'map'" [options]="maps" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
+                <p-dropdown *ngSwitchCase="'gobble'" [options]="gobbles" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
+                <p-multiSelect *ngSwitchCase="'numPlayers'" [options]="players" defaultLabel="All Players" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'in')"></p-multiSelect>
+                <p-dropdown *ngSwitchCase="'rank'" [options]="ranks" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
+                <p-dropdown *ngSwitchCase="'achieved'" [options]="kills" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
+            </th>
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-record let-columns="columns">
+        <tr [pSelectableRow]="record">
+            <td *ngFor="let col of columns"> {{record[col.field]}}</td>
+        </tr>
+    </ng-template>
+
+</p-table>
